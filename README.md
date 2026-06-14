@@ -181,6 +181,12 @@ job-application-toolkit/
         └── build-reference-docx.sh        # regenerates assets/reference.docx
 ```
 
+## Support
+
+This toolkit is free and open-source. If it helped you land an interview or saved you time,
+you can say thanks here: [buymeacoffee.com/mcmespinaa](https://buymeacoffee.com/mcmespinaa). No
+pressure, and no email or sign-up required to use anything in this repo.
+
 ## License
 
 MIT.
