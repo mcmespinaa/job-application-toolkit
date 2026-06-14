@@ -544,13 +544,39 @@ curl -fsSL https://claude.ai/install.sh | bash</code><button class="copy">Copy</
     <div class="extra-card reveal d1">
       <span class="extra-glyph">☁</span>
       <h3>Save copies to Google Drive</h3>
-      <p>Have each CV and cover letter also saved as a Google Doc in a tidy <span class="mono">Job&nbsp;Applications/&lt;Company&gt;/</span> folder on your Drive. No commands to install: it is a one-time connection.</p>
-      <ol class="extra-steps">
-        <li>In Claude Code or claude.ai, open <b>Settings → Connectors → Google Drive</b> and sign in once.</li>
-        <li>That is all. The toolkit notices the connection and syncs automatically on each run.</li>
-        <li>Want to skip it for one run? Add <span class="mono">--no-drive</span> to the command.</li>
-      </ol>
-      <p class="note">Your documents always land in your local <span class="mono">final/</span> folder regardless. This only adds a cloud copy in <i>your own</i> Drive.</p>
+      <p>Have each CV and cover letter also saved as a Google Doc in a tidy <span class="mono">Job&nbsp;Applications/&lt;Company&gt;/</span> folder on your Drive. You connect Google Drive once, and the way you do it depends on where you run Claude Code:</p>
+
+      <div class="os-tabs" data-group="drive">
+        <button class="os-tab active" data-os="desktop">Desktop app</button>
+        <button class="os-tab" data-os="vscode">VS Code</button>
+        <button class="os-tab" data-os="terminal">Terminal</button>
+      </div>
+      <div class="os-panel active" data-os="desktop" data-group="drive">
+        <ol class="extra-steps">
+          <li>Click the <b>+</b> button next to the prompt box and choose <b>Connectors</b>.</li>
+          <li>Pick <b>Google Drive</b> and sign in once through the browser.</li>
+        </ol>
+      </div>
+      <div class="os-panel" data-os="vscode" data-group="drive">
+        <ol class="extra-steps">
+          <li>There is no Connectors menu in VS Code. Type <span class="mono">/mcp</span> in the chat panel to open MCP management and connect Google Drive there.</li>
+          <li>If it is not listed yet, open the integrated terminal and run the command below first, then use <span class="mono">/mcp</span> to sign in.</li>
+        </ol>
+        <div class="code">
+          <div class="code-row"><code>claude mcp add google-drive</code><button class="copy">Copy</button></div>
+        </div>
+      </div>
+      <div class="os-panel" data-os="terminal" data-group="drive">
+        <ol class="extra-steps">
+          <li>In an active <span class="mono">claude</span> session, type <span class="mono">/mcp</span> to open the MCP panel and connect Google Drive.</li>
+          <li>Not listed yet? Add it once with the command below, then run <span class="mono">/mcp</span> to sign in.</li>
+        </ol>
+        <div class="code">
+          <div class="code-row"><code>claude mcp add google-drive</code><button class="copy">Copy</button></div>
+        </div>
+      </div>
+
+      <p class="note" style="margin-top:14px">Once connected, the toolkit syncs automatically on each run. Skip it for one run with <span class="mono">--no-drive</span>. Your documents always land in your local <span class="mono">final/</span> folder regardless. This only adds a cloud copy in <i>your own</i> Drive.</p>
     </div>
 
     <!-- Obsidian -->
