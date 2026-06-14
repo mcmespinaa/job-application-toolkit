@@ -8,6 +8,9 @@ You give it a job link. It reads the ad, scores how well you match, then writes 
 
 If you've never used a tool like this before, follow the steps below in order. It takes about 15 minutes to set up the first time, then a couple of minutes per job after that.
 
+> **Prefer a visual guide?** There's a friendly landing page with a step-by-step walkthrough at
+> **[mcmespinaa.github.io/job-application-toolkit](https://mcmespinaa.github.io/job-application-toolkit/)**.
+
 ---
 
 ## Table of contents
