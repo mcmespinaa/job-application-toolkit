@@ -261,12 +261,13 @@ The toolkit detects Pandoc automatically and always tells you which format it pr
 
 ### Google Drive, automatic cloud copies
 
-Want each CV + letter also saved as a Google Doc in your Drive? You connect Google Drive once, and
-how you do it depends on where you run Claude Code:
+Want each CV + letter also saved as a Google Doc in your Drive? Google Drive is a **Claude account
+connector**, so you sign in once and it works everywhere you use that account, including the VS Code
+extension and the terminal.
 
-- **Desktop app:** click the **+** next to the prompt box, choose **Connectors**, pick **Google Drive**, and sign in.
-- **VS Code extension:** there's no Connectors menu here. Type `/mcp` in the chat panel to connect Google Drive. If it isn't listed yet, run `claude mcp add google-drive` in the integrated terminal first, then use `/mcp` to sign in.
-- **Terminal CLI:** in a `claude` session, type `/mcp` to connect. If it isn't listed, run `claude mcp add google-drive` once, then `/mcp` to sign in.
+1. Open [claude.ai](https://claude.ai) (or the Claude desktop app), go to the **Connectors** settings, choose **Google Drive**, and sign in once.
+2. That connection carries into Claude Code in VS Code and the terminal automatically, because they use the same Claude account. There's nothing to add per app.
+3. To confirm it's live from VS Code or any terminal, run `claude mcp list` and check that **Google Drive** shows `Connected`.
 
 Once connected, the toolkit detects it and syncs automatically. Add `--no-drive` to any run to skip it.
 Your documents always land in your local `final/` folder regardless.
