@@ -189,6 +189,26 @@ section.wrap{padding:120px 28px}
 .step-body h3{font-size:1.4rem;margin-bottom:8px}
 .step-body p{color:var(--ink-soft);margin-bottom:14px;max-width:64ch}
 
+/* optional extras */
+.extras-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:820px){.extras-grid{grid-template-columns:1fr}}
+.extra-card{background:color-mix(in srgb,var(--paper-2) 70%,transparent);border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;transition:border-color .4s}
+.extra-card:hover{border-color:var(--aurora)}
+.extra-glyph{font-size:1.8rem;display:block;margin-bottom:12px;color:var(--aurora)}
+.extra-card h3{font-size:1.45rem;margin-bottom:10px}
+.extra-card>p{color:var(--ink-soft);font-size:.98rem;margin-bottom:18px}
+.extra-card a{color:var(--aurora);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--aurora) 40%,transparent)}
+.extra-card a:hover{border-bottom-color:var(--aurora)}
+.extra-steps{list-style:none;counter-reset:x;display:grid;gap:12px;margin:6px 0 4px}
+.extra-steps li{counter-increment:x;position:relative;padding-left:34px;color:var(--ink-soft);font-size:.96rem}
+.extra-steps li::before{content:counter(x);position:absolute;left:0;top:-1px;width:23px;height:23px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--aurora)}
+
+/* learn-more cards as links */
+a.card.learn{text-decoration:none;color:inherit;display:flex;flex-direction:column}
+a.card.learn .learn-link{margin-top:16px;color:var(--aurora);font-weight:600;font-size:.92rem;transition:gap .3s}
+a.card.learn:hover .learn-link{opacity:.85}
+a.card.learn .num{text-transform:uppercase;letter-spacing:.1em;font-size:.72rem}
+
 /* OS tabs */
 .os-tabs{display:flex;gap:6px;margin-bottom:0;flex-wrap:wrap}
 .os-tab{padding:8px 16px;border:1px solid var(--line);border-bottom:none;border-radius:10px 10px 0 0;background:transparent;color:var(--mist);cursor:pointer;font-family:inherit;font-size:.86rem;font-weight:600;transition:all .25s}
@@ -241,6 +261,7 @@ details .ans{padding:0 0 22px;color:var(--ink-soft);max-width:70ch}
 .coffee-card{background:linear-gradient(135deg,color-mix(in srgb,var(--aurora) 16%,var(--paper-2)),var(--paper-2));border:1px solid var(--line);border-radius:24px;padding:60px 40px;position:relative;overflow:hidden}
 .coffee-card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,color-mix(in srgb,var(--aurora) 22%,transparent),transparent 60%)}
 .coffee-card>*{position:relative}
+.coffee-sign{margin-top:20px;font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--ink-soft)}
 .coffee h2{font-size:clamp(1.9rem,3.2vw,2.6rem);margin-bottom:14px}
 .coffee p{color:var(--ink-soft);max-width:48ch;margin:0 auto 28px}
 .bmc{display:inline-flex;align-items:center;gap:11px;background:var(--aurora);color:#06140f;padding:15px 30px;border-radius:50px;font-weight:600;font-size:1.02rem;text-decoration:none;transition:all .3s;box-shadow:0 12px 30px -8px color-mix(in srgb,var(--aurora) 60%,transparent)}
@@ -278,6 +299,7 @@ footer{border-top:1px solid var(--line);padding:54px 0 60px;margin-top:40px}
       <a href="#what">What it does</a>
       <a href="#honest">Honest by design</a>
       <a href="#setup">Setup</a>
+      <a href="#extras">Extras</a>
       <a href="#faq">FAQ</a>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">◐</button>
       <a class="nav-cta" href="https://github.com/mcmespinaa/job-application-toolkit" target="_blank" rel="noopener">GitHub ↗</a>
@@ -508,6 +530,67 @@ curl -fsSL https://claude.ai/install.sh | bash</code><button class="copy">Copy</
   </div>
 </section>
 
+<!-- OPTIONAL EXTRAS -->
+<section id="extras" class="wrap">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Optional extras</span>
+    <h2>Two nice-to-haves, only if you want them.</h2>
+    <p>Everything works without these. Add them later if a cloud copy or a visual board would help. Nothing here is required, and nothing changes where your local files land.</p>
+  </div>
+
+  <div class="extras-grid">
+
+    <!-- Google Drive -->
+    <div class="extra-card reveal d1">
+      <span class="extra-glyph">☁</span>
+      <h3>Save copies to Google Drive</h3>
+      <p>Have each CV and cover letter also saved as a Google Doc in a tidy <span class="mono">Job&nbsp;Applications/&lt;Company&gt;/</span> folder on your Drive. No commands to install: it is a one-time connection.</p>
+      <ol class="extra-steps">
+        <li>In Claude Code or claude.ai, open <b>Settings → Connectors → Google Drive</b> and sign in once.</li>
+        <li>That is all. The toolkit notices the connection and syncs automatically on each run.</li>
+        <li>Want to skip it for one run? Add <span class="mono">--no-drive</span> to the command.</li>
+      </ol>
+      <p class="note">Your documents always land in your local <span class="mono">final/</span> folder regardless. This only adds a cloud copy in <i>your own</i> Drive.</p>
+    </div>
+
+    <!-- Obsidian -->
+    <div class="extra-card reveal d2">
+      <span class="extra-glyph">◈</span>
+      <h3>View it as a board in Obsidian</h3>
+      <p>Your workspace is plain text, so it opens directly in <a href="https://obsidian.md" target="_blank" rel="noopener">Obsidian</a>. With the Kanban community plugin, <span class="mono">Applications&nbsp;Board.md</span> becomes a drag-and-drop board from drafting to interview.</p>
+
+      <div class="os-tabs" data-group="obsidian">
+        <button class="os-tab active" data-os="mac">macOS</button>
+        <button class="os-tab" data-os="win">Windows</button>
+        <button class="os-tab" data-os="linux">Linux</button>
+      </div>
+      <div class="os-panel active" data-os="mac" data-group="obsidian">
+        <div class="code">
+          <div class="code-row"><code>brew install --cask obsidian</code><button class="copy">Copy</button></div>
+        </div>
+      </div>
+      <div class="os-panel" data-os="win" data-group="obsidian">
+        <div class="code">
+          <div class="code-row"><code>winget install Obsidian.Obsidian</code><button class="copy">Copy</button></div>
+        </div>
+      </div>
+      <div class="os-panel" data-os="linux" data-group="obsidian">
+        <div class="code">
+          <div class="code-row"><code><span class="c"># download the AppImage / .deb from obsidian.md, or:</span>
+flatpak install flathub md.obsidian.Obsidian</code><button class="copy">Copy</button></div>
+        </div>
+      </div>
+
+      <ol class="extra-steps" style="margin-top:16px">
+        <li>Open Obsidian and choose <b>Open folder as vault</b>, then pick your <span class="mono">Job&nbsp;Applications</span> folder.</li>
+        <li>In <b>Settings → Community plugins</b>, install and enable <b>Kanban</b>, then open <span class="mono">Applications&nbsp;Board.md</span>.</li>
+      </ol>
+      <p class="note">The vault is local and yours. Nothing syncs anywhere unless you set up Obsidian Sync yourself.</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- FAQ -->
 <section id="faq" class="wrap">
   <div class="sec-head reveal">
@@ -524,13 +607,43 @@ curl -fsSL https://claude.ai/install.sh | bash</code><button class="copy">Copy</
   </div>
 </section>
 
+<!-- LEARN MORE -->
+<section id="learn" class="wrap">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Learn more</span>
+    <h2>Where to go deeper.</h2>
+    <p>This page is the quick start. For the complete reference, the method behind it, or a hand when something does not work, here is where to look.</p>
+  </div>
+  <div class="cards">
+    <a class="card learn reveal d1" href="https://github.com/mcmespinaa/job-application-toolkit#readme" target="_blank" rel="noopener">
+      <span class="glyph">❑</span><span class="num">Read</span>
+      <h3>Full documentation</h3>
+      <p>The complete README: every command, every option, the troubleshooting table, and the file-by-file walkthrough. The best place to start after this page.</p>
+      <span class="learn-link">Open the README ↗</span>
+    </a>
+    <a class="card learn reveal d2" href="https://mcmespinaa.github.io/folder-structure-protocol/" target="_blank" rel="noopener">
+      <span class="glyph">◰</span><span class="num">Understand</span>
+      <h3>The ICM method</h3>
+      <p>Why the workspace is shaped the way it is. The Integrated Context Method is what keeps the toolkit both tailored to each job and honest to your real history.</p>
+      <span class="learn-link">Read the method ↗</span>
+    </a>
+    <a class="card learn reveal d3" href="https://github.com/mcmespinaa/job-application-toolkit/issues" target="_blank" rel="noopener">
+      <span class="glyph">❂</span><span class="num">Ask</span>
+      <h3>Questions and help</h3>
+      <p>Hit a snag, found a bug, or want a feature? Open an issue on GitHub. Contributions and ideas are welcome, it is open-source and built in the open.</p>
+      <span class="learn-link">Open an issue ↗</span>
+    </a>
+  </div>
+</section>
+
 <!-- COFFEE -->
 <section class="wrap coffee">
   <div class="coffee-card reveal">
     <span class="eyebrow" style="justify-content:center">Free and open-source</span>
     <h2 style="margin-top:16px">If it helped you land an interview…</h2>
-    <p>This toolkit is free, and it always will be. No email, no sign-up. If it saved you time or got you a callback, you can say thanks with a coffee.</p>
-    <a class="bmc" href="https://buymeacoffee.com/mcmespinaa" target="_blank" rel="noopener"><span class="cup">☕</span> Buy me a coffee</a>
+    <p>Hi, I'm Maria. I built this toolkit, and it is free, with no email and no sign-up, and it always will be. If it saved you time or got you a callback, you can say thanks with a coffee. It genuinely means a lot.</p>
+    <a class="bmc" href="https://buymeacoffee.com/mcmespinaa" target="_blank" rel="noopener"><span class="cup">☕</span> Buy Maria a coffee</a>
+    <p class="coffee-sign">Maria, Malmö</p>
   </div>
 </section>
 
@@ -548,7 +661,7 @@ curl -fsSL https://claude.ai/install.sh | bash</code><button class="copy">Copy</
       <a href="https://mcmespinaa.github.io/folder-structure-protocol/" target="_blank" rel="noopener">The ICM method</a>
     </div>
   </div>
-  <p class="foot-note" style="margin-top:26px">Built with care in Malmö. MIT licensed. Your facts stay yours.</p>
+  <p class="foot-note" style="margin-top:26px">Built with care by Maria in Malmö. MIT licensed. Your facts stay yours.</p>
 </footer>
 
 <script>
