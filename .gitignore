@@ -1,0 +1,7 @@
+# Never ship a real, filled-in workspace
+/Job Applications/
+/02_applications/
+# OS / editor noise
+.DS_Store
+node_modules/
+*.log

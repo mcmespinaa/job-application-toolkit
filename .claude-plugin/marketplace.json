@@ -1,0 +1,21 @@
+{
+  "name": "job-application-toolkit",
+  "owner": {
+    "name": "mcmespinaa",
+    "url": "https://github.com/mcmespinaa"
+  },
+  "metadata": {
+    "description": "An ICM-structured workspace and skill bundle for turning any job post into a tailored, ATS-ready CV, cover letter, and form answers — grounded in your own master CV, never invented.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "job-application",
+      "source": "./plugins/job-application",
+      "description": "Scaffold an ICM job-application workspace and run a one-command tailoring pipeline (score → CV → letter → form answers), with optional Google Drive sync and Obsidian vault integration.",
+      "version": "0.1.0",
+      "author": { "name": "mcmespinaa" },
+      "keywords": ["job-application", "cv", "resume", "cover-letter", "ats", "icm", "career"]
+    }
+  ]
+}

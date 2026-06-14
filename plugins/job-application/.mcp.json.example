@@ -1,0 +1,12 @@
+{
+  "_comment": "OPTIONAL. Rename to .mcp.json only if you want this plugin to declare a self-hosted Google Drive MCP. Most users instead connect Google Drive through Claude's built-in connectors (Settings -> Connectors) — that hosted integration handles OAuth for you and needs nothing here. See the README, 'Google Drive sync'. This example shows the shape for a community stdio Drive server; you must install and authenticate it yourself.",
+  "mcpServers": {
+    "google-drive": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "_note": "This community server requires its own OAuth credentials file. Follow that package's README to obtain and point to your credentials. The plugin cannot authenticate it for you."
+      }
+    }
+  }
+}

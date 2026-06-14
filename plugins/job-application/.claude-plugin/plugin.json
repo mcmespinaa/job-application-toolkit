@@ -1,0 +1,10 @@
+{
+  "name": "job-application",
+  "description": "Scaffold an ICM job-application workspace and run a one-command tailoring pipeline: score the match, then draft an ATS-optimised CV, a tone-matched cover letter, and form answers, all grounded in your own master CV. You add your own CV facts and previous application copies; the toolkit never invents experience.",
+  "version": "0.1.0",
+  "author": { "name": "mcmespinaa", "url": "https://github.com/mcmespinaa" },
+  "homepage": "https://github.com/mcmespinaa/job-application-toolkit",
+  "repository": "https://github.com/mcmespinaa/job-application-toolkit",
+  "license": "MIT",
+  "keywords": ["job-application", "cv", "resume", "cover-letter", "ats", "icm"]
+}
