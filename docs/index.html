@@ -163,6 +163,47 @@ section.wrap{padding:120px 28px}
 .card p{color:var(--ink-soft);font-size:.97rem}
 .card .glyph{font-size:1.7rem;margin-bottom:6px;display:block}
 
+/* ---------- skills pipeline ---------- */
+.pipe{display:grid;gap:34px}
+.pipe-stage{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.node{appearance:none;cursor:pointer;font-family:inherit;text-align:left;
+  background:color-mix(in srgb,var(--paper-2) 75%,transparent);border:1px solid var(--line);
+  border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:4px;min-width:150px;
+  transition:transform .3s,border-color .3s,box-shadow .3s,background .3s}
+.node:hover,.node:focus-visible,.node.active{transform:translateY(-3px);border-color:var(--aurora);
+  box-shadow:0 14px 30px -16px color-mix(in srgb,var(--aurora) 60%,transparent);outline:none;
+  background:color-mix(in srgb,var(--aurora) 8%,var(--paper-2))}
+.node-ix{font-family:'Fraunces',serif;font-style:italic;font-size:.85rem;color:var(--aurora)}
+.node-cmd{font-size:.96rem;color:var(--ink);font-weight:500}
+.node-tag{font-size:.78rem;color:var(--mist)}
+.flow{flex:0 0 36px;height:2px;background:linear-gradient(90deg,var(--line),var(--aurora),var(--line));
+  background-size:200% 100%;border-radius:2px;position:relative;animation:flowmove 3s linear infinite}
+@keyframes flowmove{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@media(prefers-reduced-motion:reduce){.flow{animation:none;background:var(--line)}}
+.flow::after{content:"›";position:absolute;right:-7px;top:-12px;color:var(--aurora);font-size:1.1rem}
+/* parallel clean branch */
+.node-clean{display:flex;flex-direction:column;gap:7px;padding:10px 12px 12px;border:1px dashed var(--line);border-radius:14px;position:relative}
+.clean-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mist);text-align:center}
+.node-sm{min-width:124px;padding:9px 12px;flex-direction:row;justify-content:center}
+.node-sm .node-cmd{font-size:.84rem}
+@media(max-width:820px){
+  .pipe-stage{flex-direction:column}
+  .flow{width:2px;height:30px;flex-basis:30px;background:linear-gradient(180deg,var(--line),var(--aurora),var(--line));background-size:100% 200%;animation:flowmoveV 3s linear infinite}
+  .flow::after{content:"⌄";right:-6px;top:auto;bottom:-12px}
+  .node,.node-clean{width:100%;max-width:340px}
+}
+@keyframes flowmoveV{0%{background-position:0 200%}100%{background-position:0 -200%}}
+/* detail panel */
+.pipe-detail{display:flex;gap:20px;align-items:flex-start;background:color-mix(in srgb,var(--paper-2) 60%,transparent);
+  border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;min-height:128px;transition:border-color .3s}
+.pipe-detail.lit{border-color:var(--aurora)}
+.pd-icon{font-size:2rem;color:var(--aurora);flex:0 0 auto;line-height:1;transition:transform .4s}
+.pipe-detail.lit .pd-icon{transform:scale(1.12) rotate(-6deg)}
+.pipe-detail h3{font-size:1.35rem;margin-bottom:8px}
+.pipe-detail p{color:var(--ink-soft);font-size:1rem;max-width:64ch;margin-bottom:10px}
+.pd-cmd{display:inline-block;color:var(--aurora);font-size:.86rem;background:color-mix(in srgb,var(--aurora) 10%,transparent);padding:4px 10px;border-radius:7px}
+.pd-cmd:empty{display:none}
+
 /* trust band */
 .trust{background:var(--ink);color:var(--paper);border-radius:24px;padding:64px 54px;position:relative;overflow:hidden}
 [data-theme="dark"] .trust{background:var(--paper-2);border:1px solid var(--line)}
@@ -297,6 +338,7 @@ footer{border-top:1px solid var(--line);padding:54px 0 60px;margin-top:40px}
     </a>
     <div class="nav-links">
       <a href="#what">What it does</a>
+      <a href="#skills">Skills</a>
       <a href="#honest">Honest by design</a>
       <a href="#setup">Setup</a>
       <a href="#extras">Extras</a>
@@ -352,6 +394,46 @@ footer{border-top:1px solid var(--line);padding:54px 0 60px;margin-top:40px}
     <div class="card reveal d1"><span class="glyph">⌖</span><span class="num">iv.</span><h3>Cleans the tone</h3><p>Two passes strip AI-sounding filler and over-the-top hype, so the writing reads human and quietly confident.</p></div>
     <div class="card reveal d2"><span class="glyph">⬓</span><span class="num">v.</span><h3>Exports real documents</h3><p>ATS-styled Word files land in a <span class="mono">final/</span> folder, ready to upload. No Word? You get a clean printable page instead.</p></div>
     <div class="card reveal d3"><span class="glyph">❋</span><span class="num">vi.</span><h3>Keeps a quiet record</h3><p>A simple board tracks every application from drafting to interview, so nothing slips through the cracks.</p></div>
+  </div>
+</section>
+
+<!-- SKILLS PIPELINE -->
+<section id="skills" class="wrap">
+  <div class="sec-head reveal">
+    <span class="eyebrow">What's inside</span>
+    <h2>Five skills, one pipeline.</h2>
+    <p>The toolkit is a set of small, focused skills that hand work to each other. Hover or tap a step to see what it does. A job ad goes in one end; a finished, cleaned, exported application comes out the other.</p>
+  </div>
+
+  <div class="pipe reveal d1">
+    <div class="pipe-stage" role="list">
+      <button class="node" data-skill="setup" role="listitem" aria-label="job-setup">
+        <span class="node-ix">i</span><span class="node-cmd mono">/job-setup</span><span class="node-tag">Build the workspace</span>
+      </button>
+      <span class="flow" aria-hidden="true"></span>
+      <button class="node" data-skill="apply" role="listitem" aria-label="job-application">
+        <span class="node-ix">ii</span><span class="node-cmd mono">/job-application</span><span class="node-tag">Score and draft</span>
+      </button>
+      <span class="flow" aria-hidden="true"></span>
+      <div class="node-clean">
+        <span class="clean-label">clean</span>
+        <button class="node node-sm" data-skill="slop" aria-label="slop-proof"><span class="node-cmd mono">slop-proof</span></button>
+        <button class="node node-sm" data-skill="nordic" aria-label="nordic-style"><span class="node-cmd mono">nordic-style</span></button>
+      </div>
+      <span class="flow" aria-hidden="true"></span>
+      <button class="node" data-skill="export" role="listitem" aria-label="job-export">
+        <span class="node-ix">iii</span><span class="node-cmd mono">/job-export</span><span class="node-tag">Make the documents</span>
+      </button>
+    </div>
+
+    <div class="pipe-detail" id="pipeDetail" aria-live="polite">
+      <div class="pd-icon" id="pdIcon">◷</div>
+      <div>
+        <h3 id="pdTitle">Hover a step to explore</h3>
+        <p id="pdBody">Each skill does one job and passes the result on. Together they take a single job link all the way to ready-to-send Word documents, only ever using your real experience.</p>
+        <code class="pd-cmd mono" id="pdCmd"></code>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -712,6 +794,44 @@ if(term&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
     term.style.transform=`perspective(1200px) rotateY(${-6+x*4}deg) rotateX(${2-y*3}deg)`;
   });
 }
+
+// skills pipeline interaction
+const SKILLS={
+  setup:{icon:'⌂',title:'job-setup: build your workspace',cmd:'/job-application:job-setup ~/Documents/Job Applications',
+    body:'Scaffolds the folders once: your master CV files, the per-company application folders, a Kanban board, and a tracker. Safe to re-run, and it never overwrites anything you have filled in.'},
+  apply:{icon:'◷',title:'job-application: score and draft',cmd:'/job-application:job-application <job-link>',
+    body:'The heart of it. Reads the ad, scores your fit out of 100, then drafts a CV, a cover letter, and form answers tuned to the role, using only what is in your master file. Hands the drafts to the cleaning pass.'},
+  slop:{icon:'⌖',title:'slop-proof: strip the AI tells',cmd:'runs automatically inside the pipeline',
+    body:'Catches the phrasing that makes writing sound machine-made: filler, hype, and generic structure. Keeps your voice and every fact; just removes the tells.'},
+  nordic:{icon:'❄',title:'nordic-style: set a plain, honest register',cmd:'runs automatically inside the pipeline',
+    body:'Tones down salesy, overclaiming language into the plain, direct register a Nordic reader trusts. Preserves your meaning and keeps the keywords a recruiter needs.'},
+  export:{icon:'⬓',title:'job-export: make the documents',cmd:'/job-application:job-export <application-folder>',
+    body:'Turns the cleaned drafts into ATS-styled Word files in a final/ folder, ready to upload. No Word on the machine? It falls back to a clean printable page and tells you so.'}
+};
+const pd={icon:document.getElementById('pdIcon'),title:document.getElementById('pdTitle'),body:document.getElementById('pdBody'),cmd:document.getElementById('pdCmd'),box:document.getElementById('pipeDetail')};
+const nodes=[...document.querySelectorAll('.node')];
+let pinned=null;
+function showSkill(key){
+  const s=SKILLS[key]; if(!s) return;
+  pd.icon.textContent=s.icon; pd.title.textContent=s.title; pd.body.textContent=s.body; pd.cmd.textContent=s.cmd;
+  pd.box.classList.add('lit');
+  nodes.forEach(n=>n.classList.toggle('active',n.dataset.skill===key));
+}
+function clearSkill(){
+  if(pinned) return;
+  pd.box.classList.remove('lit'); nodes.forEach(n=>n.classList.remove('active'));
+  pd.icon.textContent='◷'; pd.title.textContent='Hover a step to explore';
+  pd.body.textContent='Each skill does one job and passes the result on. Together they take a single job link all the way to ready-to-send Word documents, only ever using your real experience.';
+  pd.cmd.textContent='';
+}
+nodes.forEach(n=>{
+  const k=n.dataset.skill;
+  n.addEventListener('mouseenter',()=>showSkill(k));
+  n.addEventListener('focus',()=>showSkill(k));
+  n.addEventListener('mouseleave',clearSkill);
+  n.addEventListener('blur',clearSkill);
+  n.addEventListener('click',()=>{ pinned = (pinned===k)?null:k; pinned?showSkill(k):clearSkill(); });
+});
 </script>
 </body>
 </html>
