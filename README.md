@@ -1,5 +1,8 @@
 # Job Application Toolkit
 
+[![CI](https://github.com/mcmespinaa/job-application-toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/mcmespinaa/job-application-toolkit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](LICENSE)
+
 **Turn any job ad into a tailored, ready-to-send application, a fit score, a CV, a cover letter, and answers to the application form's questions, all written from _your own_ real experience, never invented.**
 
 You give it a job link. It reads the ad, scores how well you match, then writes a CV and cover letter tuned to that specific role, cleans them up, and saves them as Word documents you can upload. Everything stays on your computer.
@@ -28,7 +31,8 @@ If you've never used a tool like this before, follow the steps below in order. I
 11. [Troubleshooting](#troubleshooting)
 12. [How it works under the hood](#how-it-works-under-the-hood)
 13. [FAQ](#faq)
-14. [Support](#support) · [License](#license)
+14. [Development](#development)
+15. [Support](#support) · [License](#license)
 
 ---
 
@@ -306,7 +310,10 @@ This separation is why the toolkit can be both _tailored_ (every CV fits the spe
 ```
 job-application-toolkit/
 ├── .claude-plugin/marketplace.json     # how Claude Code finds the plugin
+├── .github/workflows/ci.yml            # manifest checks, shellcheck, tests
+├── CHANGELOG.md                        # release history
 ├── README.md                           # this guide
+├── tests/                              # manifest validation + script/docx tests
 └── plugins/job-application/
     ├── .claude-plugin/plugin.json      # plugin manifest
     ├── skills/                         # the commands: job-setup, job-application,
@@ -339,6 +346,21 @@ Yes. Each person installs it and runs `/job-setup` to make their _own_ workspace
 
 **It's missing a skill I want / something broke.**
 Open an issue on the GitHub repo. Contributions welcome.
+
+---
+
+## Development
+
+You don't need any of this to _use_ the toolkit, it's for contributors. Every push runs [CI](https://github.com/mcmespinaa/job-application-toolkit/actions/workflows/ci.yml) that validates the plugin manifests, ShellChecks the scripts, and runs the test suite. To run the same checks locally (all stdlib-only, no dependencies to install beyond what a test touches):
+
+```bash
+python3 tests/validate_manifests.py     # marketplace.json + plugin.json are valid and consistent
+bash    tests/smoke-scripts.sh           # setup is idempotent; export fallback works and escapes HTML
+python3 tests/test_reference_docx.py     # the ATS reference.docx carries its expected styles
+python3 tests/test_reference_docx.py --build   # regenerate the reference.docx from source, then verify (needs pandoc)
+```
+
+The `--build` test guards the trickiest code, `scripts/build-reference-docx.sh`, which patches Pandoc's default Word template; it fails loudly if a future Pandoc changes shape and the styling silently stops applying.
 
 ---
 
