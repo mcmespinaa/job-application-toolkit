@@ -17,6 +17,7 @@ Zero third-party dependencies — stdlib only (zipfile, xml, subprocess).
 
 import os
 import sys
+import shutil
 import zipfile
 import subprocess
 import xml.etree.ElementTree as ET
@@ -45,10 +46,7 @@ def maybe_build():
     if "--build" not in sys.argv:
         return
     for dep in ("pandoc", "python3"):
-        if subprocess.run(["command", "-v", dep], shell=False,
-                          capture_output=True).returncode != 0 and \
-           not any(os.access(os.path.join(p, dep), os.X_OK)
-                   for p in os.environ.get("PATH", "").split(os.pathsep)):
+        if shutil.which(dep) is None:
             print(f"SETUP ERROR: --build needs '{dep}' on PATH.", file=sys.stderr)
             sys.exit(2)
     print(f"Rebuilding reference.docx via {BUILD_SCRIPT} ...")
