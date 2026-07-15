@@ -6,5 +6,6 @@
   "homepage": "https://github.com/mcmespinaa/job-application-toolkit",
   "repository": "https://github.com/mcmespinaa/job-application-toolkit",
   "license": "MIT",
-  "keywords": ["job-application", "cv", "resume", "cover-letter", "ats", "icm"]
+  "keywords": ["job-application", "cv", "resume", "cover-letter", "ats", "icm"],
+  "skills": ["job-application", "job-setup", "job-export", "slop-proof", "nordic-style"]
 }

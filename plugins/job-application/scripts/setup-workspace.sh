@@ -51,16 +51,16 @@ copy_if_absent() {
   local src="$1" dest="$2"
   mkdir -p "$(dirname "$dest")"
   if [ -e "$dest" ]; then
-    echo "  skip (exists): ${dest#$TARGET/}"
+    echo "  skip (exists): ${dest#"$TARGET"/}"
   else
     cp "$src" "$dest"
-    echo "  create:        ${dest#$TARGET/}"
+    echo "  create:        ${dest#"$TARGET"/}"
   fi
 }
 
 # Walk every file in templates and place it, preserving structure.
 while IFS= read -r -d '' src; do
-  rel="${src#$TEMPLATES_DIR/}"
+  rel="${src#"$TEMPLATES_DIR"/}"
   dest="$TARGET/$rel"
   base="$(basename "$rel")"
 

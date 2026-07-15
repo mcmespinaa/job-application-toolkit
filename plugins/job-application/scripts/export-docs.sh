@@ -69,6 +69,9 @@ convert_one() {
   # Fallback: very small md->html (headings, bullets, paragraphs) via a Node one-liner if available,
   # else a literal <pre> wrapper that still opens and prints. Node is a soft prereq already listed.
   if command -v node >/dev/null 2>&1; then
+    # shellcheck disable=SC2016  # single quotes are intentional: this is a Node program, not shell.
+    # The $-refs inside are JS reading process.env (SRC/OUT/TITLE/CSS), passed as env vars above —
+    # they must NOT be expanded by the shell.
     SRC="$src" OUT="$APP/final/$base.html" TITLE="$base" CSS="$HTML_CSS" node -e '
       const fs=require("fs");
       let md=fs.readFileSync(process.env.SRC,"utf8").split("\n"),out=[],inList=false;
