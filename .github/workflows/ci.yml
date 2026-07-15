@@ -1,0 +1,58 @@
+name: CI
+
+# All run: steps below invoke only static commands and repo-local files — no untrusted
+# github.event.* input is interpolated anywhere, so there is no workflow-injection surface.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-manifests:
+    name: Validate plugin manifests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate JSON is well-formed and has required plugin fields
+        run: python3 tests/validate_manifests.py
+
+  shellcheck:
+    name: ShellCheck scripts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Lint all shell scripts
+        run: shellcheck plugins/job-application/scripts/*.sh tests/*.sh
+
+  smoke-scripts:
+    name: Smoke-test user scripts (setup + export fallback)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      # NOTE: deliberately do NOT install pandoc here, so the export HTML fallback
+      # chain (the path most users without pandoc hit) is what gets exercised.
+      - name: Run script smoke tests
+        run: bash tests/smoke-scripts.sh
+
+  reference-docx:
+    name: Build & verify ATS reference.docx
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+      # --build regenerates reference.docx from source, then the test asserts the
+      # style injections landed. This is what catches Pandoc changing styles.xml shape.
+      - name: Rebuild from source and verify styling
+        run: python3 tests/test_reference_docx.py --build
+      - name: Verify the COMMITTED asset is also valid
+        run: python3 tests/test_reference_docx.py
