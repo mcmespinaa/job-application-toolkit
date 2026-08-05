@@ -1,6 +1,15 @@
 ---
 name: job-application
-description: "End-to-end job application tailoring. Drop a job post (URL, pasted text, or screenshot) and this skill scores the match, then drafts an ATS-optimised CV, a tone-matched cover letter, and a form-answers file, all tailored to that role and grounded in the user's own master CV. Use when the user says /job-application, 'tailor my CV for this', 'apply to this job', 'draft a cover letter for this role', 'how well do I match this job', or pastes/links a job posting in their Job Applications workspace. Reads the 00_master/ factory files. Pairs with slop-proof and nordic-style (both run automatically as a cleaning pass)."
+description: >-
+  End-to-end job application tailoring. Drop a job post (URL, pasted text, or
+  screenshot) and this skill scores the match, then drafts an ATS-optimised CV,
+  a tone-matched cover letter, and a form-answers file, all tailored to that
+  role and grounded in the user's own master CV. Use when the user says
+  /job-application, 'tailor my CV for this', 'apply to this job', 'draft a cover
+  letter for this role', 'how well do I match this job', or pastes/links a job
+  posting in their Job Applications workspace. Reads the 00_master/ factory
+  files. Pairs with slop-proof and nordic-style (both run automatically as a
+  cleaning pass).
 ---
 
 # Job-Application

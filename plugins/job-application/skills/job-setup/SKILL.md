@@ -1,6 +1,16 @@
 ---
 name: job-setup
-description: "Scaffold a fresh ICM job-application workspace on the user's machine. Use when the user says /job-setup, 'set up my job application workspace', 'create the CV workspace', or has just installed the job-application plugin and needs the folder structure. Creates the 00_master factory, 01_intake, 02_applications, _archive, _templates, the Kanban board, tracker, CLAUDE.md map, and a non-destructive permissions allowlist. Idempotent: never overwrites a file the user has already filled in. Also handles --mine-archive to build experience-bank.md and voice.md from the user's past applications dropped in _archive/. NOT for tailoring an individual application (use /job-application for that); this only creates the empty workspace."
+description: >-
+  Scaffold a fresh ICM job-application workspace on the user's machine. Use when
+  the user says /job-setup, 'set up my job application workspace', 'create the
+  CV workspace', or has just installed the job-application plugin and needs the
+  folder structure. Creates the 00_master factory, 01_intake, 02_applications,
+  _archive, _templates, the Kanban board, tracker, CLAUDE.md map, and a
+  non-destructive permissions allowlist. Idempotent: never overwrites a file the
+  user has already filled in. Also handles --mine-archive to build
+  experience-bank.md and voice.md from the user's past applications dropped in
+  _archive/. NOT for tailoring an individual application (use /job-application
+  for that); this only creates the empty workspace.
 ---
 
 # Job-Setup

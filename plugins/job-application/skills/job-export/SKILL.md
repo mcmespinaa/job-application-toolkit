@@ -1,6 +1,15 @@
 ---
 name: job-export
-description: "Export a finished application's CV and cover letter into document files (ATS-styled DOCX, or HTML if Pandoc is absent) in the application's final/ folder. Use when the user says /job-export, 'export my CV to Word', 'generate the docx', 'make the PDF', 'turn this into a document', or has edited a cv.md/letter.md and wants fresh document files. Produces single-column, ATS-safe, black-only styled documents that land directly in the local folder, no Obsidian or Google Drive needed. NOT for writing or editing CV content (use /job-application for that); this only renders existing cv.md and letter.md into documents."
+description: >-
+  Export a finished application's CV and cover letter into document files
+  (ATS-styled DOCX, or HTML if Pandoc is absent) in the application's final/
+  folder. Use when the user says /job-export, 'export my CV to Word', 'generate
+  the docx', 'make the PDF', 'turn this into a document', or has edited a
+  cv.md/letter.md and wants fresh document files. Produces single-column,
+  ATS-safe, black-only styled documents that land directly in the local folder,
+  no Obsidian or Google Drive needed. NOT for writing or editing CV content (use
+  /job-application for that); this only renders existing cv.md and letter.md
+  into documents.
 ---
 
 # Job-Export

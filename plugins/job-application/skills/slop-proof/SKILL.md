@@ -1,6 +1,16 @@
 ---
 name: slop-proof
-description: "Detect and remove AI-slop writing tells from copy: memos, READMEs, landing pages, blog posts, emails, social posts, docs. Two modes: audit (report every tell with line references and severity) and rewrite (fix flagged text while preserving the author's voice and claims). Use whenever the user says /slop-proof, 'deslop this', 'check for AI slop', 'does this sound like AI', 'humanize this copy', 'make this sound human', 'slop check', or asks to review the tone or voice of a draft before publishing. Also use proactively as a final pass on any user-facing copy you wrote yourself: if you drafted it, slop-proof it. NOT for setting Nordic/Scandinavian register (use /nordic-style), and not for fact-checking or translation."
+description: >-
+  Detect and remove AI-slop writing tells from copy: memos, READMEs, landing
+  pages, blog posts, emails, social posts, docs. Two modes: audit (report every
+  tell with line references and severity) and rewrite (fix flagged text while
+  preserving the author's voice and claims). Use whenever the user says
+  /slop-proof, 'deslop this', 'check for AI slop', 'does this sound like AI',
+  'humanize this copy', 'make this sound human', 'slop check', or asks to review
+  the tone or voice of a draft before publishing. Also use proactively as a
+  final pass on any user-facing copy you wrote yourself: if you drafted it,
+  slop-proof it. NOT for setting Nordic/Scandinavian register (use
+  /nordic-style), and not for fact-checking or translation.
 ---
 
 # Slop-Proof

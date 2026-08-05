@@ -1,6 +1,17 @@
 ---
 name: nordic-style
-description: "Rewrite English copy into the plain, direct, understated register that Nordic (Danish, Swedish, Norwegian) professionals use and expect. Strips American-style hype, superlatives, and hard-selling; favours short sentences, modesty, and substance over persuasion. Two modes: audit (flag every non-Nordic tell with a fix) and rewrite (apply the fixes, preserving facts and meaning). Use when the user says /nordic-style, 'make this sound Nordic/Scandinavian/Danish/Swedish', 'plain Nordic tone', 'less American', 'understated', 'tone this down for a Nordic audience', or is writing a cover letter, email, or copy aimed at a Nordic company or reader. Pairs well with /slop-proof (run slop-proof first to remove AI tells, then nordic-style for register)."
+description: >-
+  Rewrite English copy into the plain, direct, understated register that Nordic
+  (Danish, Swedish, Norwegian) professionals use and expect. Strips
+  American-style hype, superlatives, and hard-selling; favours short sentences,
+  modesty, and substance over persuasion. Two modes: audit (flag every
+  non-Nordic tell with a fix) and rewrite (apply the fixes, preserving facts and
+  meaning). Use when the user says /nordic-style, 'make this sound
+  Nordic/Scandinavian/Danish/Swedish', 'plain Nordic tone', 'less American',
+  'understated', 'tone this down for a Nordic audience', or is writing a cover
+  letter, email, or copy aimed at a Nordic company or reader. Pairs well with
+  /slop-proof (run slop-proof first to remove AI tells, then nordic-style for
+  register).
 ---
 
 # Nordic-Style
